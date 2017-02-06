@@ -149,30 +149,30 @@
 \examiner    {}
 \degree      {}
 \authors     {}
-\university  {\texorpdfstring{\href{University Web Site URL Here (include http://)}
-                {University Name}}
-                {University Name}}
-\UNIVERSITY  {\texorpdfstring{\href{University Web Site URL Here (include http://)}
-                {UNIVERSITY NAME (IN BLOCK CAPITALS)}}
-                {UNIVERSITY NAME (IN BLOCK CAPITALS)}}
-\department  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://)}
-                {Department or School Name}}
-                {Department or School Name}}
-\DEPARTMENT  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://)}
-                {DEPARTMENT OR SCHOOL NAME (IN BLOCK CAPITALS)}}
-                {DEPARTMENT OR SCHOOL NAME (IN BLOCK CAPITALS)}}
+\university  {\texorpdfstring{\href{University Web Site URL Here (include http://bsu.by/en/main.aspx)}
+                {Belarusian State University}}
+                {Belarusian State University}}
+\UNIVERSITY  {\texorpdfstring{\href{University Web Site URL Here (include http://bsu.by/en/main.aspx)}
+                {BELARUSIAN STATE UNIVERSITY}}
+                {BELARUSIAN STATE UNIVERSITY}}
+\department  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://rfe.by/)}
+                {Department of Telecommunication and Information Technologies}}
+                {Department of Telecommunication and Information Technologies}}
+\DEPARTMENT  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://rfe.by/)}
+                {DEPARTMENT OF TELECOMMUNICATION AND INFORMATION TECHNOLOGIES}}
+                {DEPARTMENT OF TELECOMMUNICATION AND INFORMATION TECHNOLOGIES}}
 \group       {\texorpdfstring{\href{Research Group Web Site URL Here (include http://)}
                 {Research Group Name}}
                 {Research Group Name}}
 \GROUP       {\texorpdfstring{\href{Research Group Web Site URL Here (include http://)}
                 {RESEARCH GROUP NAME (IN BLOCK CAPITALS)}}
                 {RESEARCH GROUP NAME (IN BLOCK CAPITALS)}}
-\faculty     {\texorpdfstring{\href{Faculty Web Site URL Here (include http://)}
-                {Faculty Name}}
-                {Faculty Name}}
-\FACULTY     {\texorpdfstring{\href{Faculty Web Site URL Here (include http://)}
-                {FACULTY NAME (IN BLOCK CAPITALS)}}
-                {FACULTY NAME (IN BLOCK CAPITALS)}}
+\faculty     {\texorpdfstring{\href{Faculty Web Site URL Here (include http://rfe.by/)}
+                {Faculty of Radiophysics and Computer Technologies}}
+                {Faculty of Radiophysics and Computer Technologies}}
+\FACULTY     {\texorpdfstring{\href{Faculty Web Site URL Here (include http://rfe.by/)}
+                {FACULTY OF RADIOPHYSICS AND COMPUTER TECHNOLOGIES}}
+                {FACULTY OF RADIOPHYSICS AND COMPUTER TECHNOLOGIES}}
 \addresses   {}
 \subject     {}
 \keywords    {}
@@ -201,7 +201,7 @@
       {\LARGE \authornames \par}
       \vfill
       {\large A thesis submitted in partial fulfillment for the \par}
-      {\large degree of Doctor of Philosophy \par}
+      {\large degree of Specialist \par}
       \bigskip
       \bigskip
       {\large in the \par}
