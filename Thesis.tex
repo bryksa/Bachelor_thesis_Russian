@@ -4,8 +4,8 @@
 
 % Set up the document
 \documentclass[a4paper, 14pt, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
-\graphicspath{Figures/}  % Location of the graphics files (set up for graphics to be in PDF format)
-
+%\usepackage{graphics}
+%\graphicspath{/home/artsiom-bryksa/Bachelor_thesis/Bachelor_thesis/Data}  % Location of the graphics files (set up for graphics to be in PDF format)
 % Include any extra LaTeX packages required
 \usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
 \usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
@@ -94,7 +94,7 @@ If the quote is taken from someone, their name goes here
 \addtotoc{Abstract}  % Add the "Abstract" page entry to the Contents
 \abstract{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
-This Technical Proposal presents the upgrades foreseen to prepare the CMS experiment for the High Luminosity LHC. In this second phase of the LHC physics program, the accelerator will provide to CMS an additional integrated luminosity of about 2500 fb−1 over 10 years of operation, starting in 2025. This will substantially enlarge the mass reach in the search for new particles and will also greatly extend the potential to study the properties of the Higgs boson discovered at the LHC in 2012.\cite{Reference1:1}
+The CMS phase II upgrade outer tracker is built from two types of modules (PS and 2S) each consisting of two silicon sensors and associated electronics and mechanics. In the case of the PS module, the sensors has be assembled to a precision of approximately 40 mm. In order to satisfy this requirement and a short module assembly time, an automated assembly system is proposed. This systems based on a high-precision motion-stage integrated with high-resolution camera, which provides pattern-recognition, vacuum holding system and control systems. \cite{Reference1}
 
 }
 
@@ -185,15 +185,17 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 % Include the chapters of the thesis, as separate files
 % Just uncomment the lines as you write the chapters
 
-\input{Chapters/Chapter1} % Introduction
+\input{Chapters/Introduction} % Introduction
 
-\input{Chapters/Chapter2} % Module assembly 
+\input{Chapters/Module_assembly} % Module assembly 
 
-\input{Chapters/Chapter3} % Fast adhesive
+\input{Chapters/Automated_assembly_system} % Assembly System
 
-\input{Chapters/Chapter4} % Precision Estimation tests
+\input{Chapters/Fast_adhesive} % Fast adhesive
 
-\input{Chapters/Chapter5} % Conclusion
+\input{Chapters/Precision_tests} % Precision Estimation tests
+
+\input{Chapters/Conclusion} % Conclusion
 
 %\input{Chapters/Chapter6} % Results and Discussion
 
