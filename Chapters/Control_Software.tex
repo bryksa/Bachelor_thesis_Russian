@@ -1,0 +1,51 @@
+\chapter{Control Software}
+
+In order to control the whole automated assemby system a PC-based Qt-application was developed. All the neccessary hardware is connected to the PC with USB interface.
+
+\section{General structure of the application}
+
+MVC
+Examples
+
+\section{Pattern recognition}
+
+Pattern recognition is a crucial part of the whole automated assembly system. This part of the system provides the software with the information where are all the components of the modules and theirs orientation in the space. Within this information the software is able to calculate where to move each component of an assembling module.
+
+
+
+General idea
+Pattern recognition steps:
+Acquire image
+Grayscale picture if not already.
+Make binary (threshold)
+Theta loop with (x;y) detection in each iteration
+Find the best theta (lower point of the graph)
+Provide (x;y;theta)
+Theta range:
+(-0.5:0.025:0.5)
+
+
+\subsection{Pattern recognition algorithm}
+
+OpenCV library, methods
+
+\subsection{Threshold}
+
+
+
+\section{Application functionality}
+
+\subsection{Aqcuire image}
+
+\subsection{Threshold tuner}
+
+\subsection{Motion manager}
+
+\subsection{Autofocus}
+
+
+
+
+
+
+%\subsection{A Subsection}
