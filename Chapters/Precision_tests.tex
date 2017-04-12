@@ -4,7 +4,7 @@ The automated assembly system has a number of properties in terms of precision:
 \item Motion stage movement repeatability.
 \item Image acquiring repeatability.
 \item Precision of pattern recognition.
-\item Possible movements of the sensors while picking them up and down with the vacuum pick up tool.
+\item Possible movements of a sensor while picking them up and down with the vacuum pick up tool.
 \item \ldots
 \end{enumerate}
 In order to investigate this properties a series of tests were done.
@@ -13,7 +13,7 @@ In order to investigate this properties a series of tests were done.
 
 \section{Pattern recognition precision tests}
 
-For investigation of the pattern recognition precision the folowing tests were done. During these tests samples were not moved, so that the additional errors by vacuum pick up and down can be excluded.   \ldots
+For investigation of the pattern recognition precision the folowing tests were done. During these tests samples were not moved, so that the additional errors by vacuum pick up and down can be excluded.
 \subsection{Pattern recognition on the painted corner of a glass dummy}
 In the very first test we investigated the pattern recognition on the corner of the sample. Thin pieces of glass with a silver painted corner (Figure \ref{fig:painted_corner}) were used for the tests as an approximation of a silicon sensor.
 
@@ -26,10 +26,10 @@ In the very first test we investigated the pattern recognition on the corner of 
 The step-by-step outline of this test is listed below:
 \begin{enumerate}
 \item Move to the image acquiring position.
-\item Acquire Image and run pattern recognition.
+\item Acquire image and run pattern recognition.
 \item Move aside for 5~mm \underline{in all axes (?)}.
 \item Move to the image acquiring position.
-\item Acquire Image and run pattern recognition.
+\item Acquire image and run pattern recognition.
 \item Save data of the current iteration and go to the next one.
 \end{enumerate}
 
@@ -53,8 +53,8 @@ After each step software saves the difference between measured cordinates before
 \label{fig:corner_theta}
 \end{figure}
 
-Looking at the Figures \ref{fig:corner_x} and \ref{fig:corner_y} one can see that the X, Y detection of the pattern recognition is enough precise for the project (\underline{1-2~um of error [?]}), while the theta detection results do not look so precise. There are several reasons of such behavior. The main one them is shown on the Figure \ref{fig:corner_threshold}.
-\\Silver painted surface is not flat in 100~um scale. Due to this roughness different amount of light reflects to the camera. That is why the painted corner contains various shades of grey, \underline{which [?]} in some points are darker, than the table underneath the sample (background). All these result into the picture one can see in the Figure \ref{fig:corner_threshold}. This kind of pictures has random distribution of dark areas on it. That is why the pattern recognition algorithm has such error while comparing two pictures (master template and acquired image) with random distribution of black areas. Moreover, this kind of tests lasts around one hour, which is long enough for the sun light to change its luminosity. Even though all reasonably possible measures were done to prevent such effect, the acuired image is very sensetive for light. For example, during a sunny day the threshold varies for 20 units (the color depth is 256) even with closed jalousie. \underline{[should I mention it...?]}
+Looking at the Figures \ref{fig:corner_x} and \ref{fig:corner_y} one can see that the X, Y detection of the pattern recognition has enough good precision (\underline{1-2~um of error [?]}), while the theta detection results do not look so precise. There are several reasons of such behavior. The main one them is shown on the Figure \ref{fig:corner_threshold}.
+\\Silver painted surface is not flat in 100~um scale. Due to this roughness different amount of light reflects to the camera from different points along the paint surface. That is why the painted corner contains various shades of grey, \underline{which [?]} in some points are darker, than the table underneath the sample (background). All these result into the picture one can see in the Figure \ref{fig:corner_threshold}. This kind of pictures has random distribution of dark areas on it. That is why the pattern recognition algorithm has such error while comparing two pictures (master template and acquired image) with random distribution of black areas. Moreover, this kind of tests lasts around one hour, which is long enough for the sun light to change its luminosity. Even though all reasonably possible measures were done to prevent such effect, the acuired image is very sensetive for light. For example, the effect of the sunny light can results in the threshold variation for 20 units (the color depth is 256) even with closed jalousie. \underline{[should I mention it...?]}
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Corner_thresholded.png}
