@@ -7,9 +7,48 @@ In order to control the whole automated assemby system a PC-based Qt-application
 MVC
 Examples
 
+\section{Application functionality}
+
+\subsection{Aqcuire image}
+
+\subsection{Threshold tuner}
+
+\subsection{Motion manager}
+
+\section{OpenCV library}
+
+A lot of algorithms needed for the application were found in the open-source library~---~OpenCV.
+
+OpenCV (\textit{Open Source Computer Vision})~---~is a cross-platform library of programming functions mainly oriented on real-time computer vision. Originally developed by Intel's research center in Nizhny Novgorod (Russia), it was later supported by Willow Garage and is now maintained by Itseez. The library is free for use under the open-source BSD license~\cite{Reference3}.
+
+In the list below one can see main features of the OpenCV library~\cite{Reference4}:
+\begin{itemize}
+\setlength\itemsep{-0.5em}
+\item Image data manipulation (allocation, release, copying, setting, conversion).
+\item Image and video I/O (file and camera based input, image/video file output).
+\item Matrix and vector manipulation and linear algebra routines (products, solvers, eigenvalues, SVD).
+\item Various dynamic data structures (lists, queues, sets, trees, graphs).
+\item Basic image processing (filtering, edge detection, corner detection, sampling and interpolation, color conversion, morphological operations, histograms, image pyramids).
+\item Structural analysis (connected components, contour processing, distance transform, various moments, template matching, Hough transform, polygonal approximation, line fitting, ellipse fitting, Delaunay triangulation).
+\item Camera calibration (finding and tracking calibration patterns, calibration, fundamental matrix estimation, homography estimation, stereo correspondence).
+\item Motion analysis (optical flow, motion segmentation, tracking).
+\item Object recognition (eigen-methods, HMM).
+\item Basic GUI (display image/video, keyboard and mouse handling, scroll-bars).
+\item Image labeling (line, conic, polygon, text drawing).
+\end{itemize}
+
+The features of this library is used in the folowing modules:
+\begin{itemize}
+\setlength\itemsep{-0.5em}
+\item Pattern recognition.
+\item Image processing (Grayscale to Binary picture).
+\item AutoFocus.
+\item Camera communication.
+\end{itemize}
+
 \section{Pattern recognition}
 
-Pattern recognition is a crucial part of the whole automated assembly system. This part of the system provides the software with the information where are all the components of the modules and theirs orientation in the space. Within this information the software is able to calculate where to move each component of an assembling module.
+Pattern recognition is a crucial part of the whole automated assembly system. It provides the software with the information where all the components of the modules are situated in the space and theirs orientation. Within this information the software is able to calculate where to move each component of an assembling module.
 
 
 
@@ -29,17 +68,11 @@ Theta range:
 
 OpenCV library, methods
 
+
+
 \subsection{Threshold}
 
 
-
-\section{Application functionality}
-
-\subsection{Aqcuire image}
-
-\subsection{Threshold tuner}
-
-\subsection{Motion manager}
 
 \subsection{Autofocus}
 

@@ -10,7 +10,11 @@
 \usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
 \usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
 \usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
+\usepackage{indentfirst} % To enable indent of the first paragraph in chapter/section
 \hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0em}
 
 %% ----------------------------------------------------------------
 \begin{document}
@@ -95,6 +99,7 @@ If the quote is taken from someone, their name goes here
 \addtotoc{Abstract}  % Add the "Abstract" page entry to the Contents
 \abstract{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
+
 The CMS phase II upgrade outer tracker is built from two types of modules (PS and 2S) each consisting of two silicon sensors and associated electronics and mechanics. In the case of the PS module, the sensors has be assembled to a precision of approximately 40 mm. In order to satisfy this requirement and a short module assembly time, an automated assembly system is proposed. This systems based on a high-precision motion-stage integrated with high-resolution camera, which provides pattern-recognition, vacuum holding system and control systems. \cite{Reference1}
 
 }
