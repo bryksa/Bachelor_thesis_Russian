@@ -1,15 +1,38 @@
 \chapter{Control Software}
 
-In order to control the whole automated assemby system a PC-based Qt-application was developed. All the neccessary hardware is connected to the PC with USB interface.
+In order to control the whole automated assembly system a PC-based Qt-application was developed. All the necessary hardware is connected to the PC with USB interface.
 
 \section{General structure of the application}
 
-MVC
-Examples
+The architecture of the application is based on Model-View-Controller (MVC) architectural pattern. It considers there to be three main types of objects: model objects, view objects and controller objects. When designing an application, a major step is choosing or creating custom classes for objects that fall into one of these three groups. Each of the three types of objects is separated from the others by abstract boundaries and communicates with objects of the other types across those boundaries. The pattern defines not only the roles objects play in the application, it defines the way objects communicate with each other \ref{apple_MVC}. The key point of MVC is that View and Controller depend on Model, but Model does not depend on them. The  interaction of these three types is schematically shown in the Figure \ref{fig:mvc_general}.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.7\linewidth]{Data/Control_Software/MVC_general.png}
+\caption{Model, View and Controller (MVC) relative to user.}
+\label{fig:mvc_general}
+\end{figure}
+
+Shown above interaction is a classical MVC architecture. There are various realization of this diagram in terms of interaction between three main object types of MVC. The main reasons of it are various application types and their realizations. For instance, in our application this diagram will look like in the Figure \ref{fig:mvc_custom}.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.7\linewidth]{Data/Control_Software/MVC_custom.png}
+\caption{Model, View and Controller (MVC) relative to user.}
+\label{fig:mvc_custom}
+\end{figure}
+
+Comparing to classical MVC structure from Figure \ref{fig:mvc_general}, Model do not directly inform/update View. This information passes through Controller.
+
+Depending on the application logic and demands, Model, View and Controller follow special properties and rules.
+
+Model is usually responsible for For instance, there is a Model class \textit{ConradModel} in our application. It is responsible for communication with a relay card for turning on and off vacuum lines. This class completely meet MVC rules as a Model object because it does not depend on any other class, while others depend on it using its possibilities for their functions.
+
+View unite all objects responsible for visual part of the application: windows, tabs, labels, forms, buttons, etc. For instance, one task of \textit{AssemblyModuleAssembler} class is to display the information about Vacuum lines of the system.
+
+Controller  is... For instance, \textit{ConradManager} provides all necessary functions to control the vacuum lines and to get the current status of it.
 
 \section{Application functionality}
 
-\subsection{Aqcuire image}
+\subsection{Acquire image}
 
 \subsection{Threshold tuner}
 
@@ -37,7 +60,9 @@ In the list below one can see main features of the OpenCV library~\cite{Referenc
 \item Image labeling (line, conic, polygon, text drawing).
 \end{itemize}
 
-The features of this library is used in the folowing modules:
+
+
+The features of this library are used in the following modules:
 \begin{itemize}
 \setlength\itemsep{-0.5em}
 \item Pattern recognition.
