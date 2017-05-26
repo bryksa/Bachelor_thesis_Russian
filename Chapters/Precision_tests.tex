@@ -1,6 +1,7 @@
 \chapter{Precision estimation tests}
 The automated assembly system has a number of properties in terms of precision:
 \begin{enumerate}
+\setlength\itemsep{-0.5em}
 \item Motion stage movement repeatability.
 \item Image acquiring repeatability.
 \item Precision of pattern recognition.
@@ -77,7 +78,7 @@ The same test, but with dummy silicon sensor and real marker on it, was done. Be
 
 The Distribution of X, Y coordinates and theta shows better results than with painted corner, which was expected. For X and Y it is less than a micron, which is already at the limit of camera resolution. $\Delta theta$ is one order of magnitude better than with painted corner --- $\approx 0.02  degree$.
 
-A screenshot of the application during the test is shown on the Figure \ref{fig:zero_peak}. On the pattern recognition curve one can see that exactly at 0 degree there is an unexpected short upward shot. This peak is not a fluctuation and it is not consist of only one point in the plot. As the scale increases, more points form this peak. It was not observed in the previous test just because the theta step was one order of magnitude bigger.
+A screenshot of the application during the test is shown on the Figure \ref{fig:zero_peak}. On the pattern recognition curve one can see that at 0 degree there is an unexpected short upward shot. This peak is not a fluctuation and it is not consist of only one point in the plot. As the scale increases, more points form this peak appear. It was not observed in the previous test just because the theta step was one order of magnitude bigger.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Upward_shot.png}
@@ -87,7 +88,7 @@ A screenshot of the application during the test is shown on the Figure \ref{fig:
 
 \section{Pick-up and -down precision tests}
 
-Next set of tests were oriented to explore the effect of picking-up/down on the precision of the system. In other words, will this process move the sample or not. Due to the risk of breaking fragile silicon sample, we used a glass one.
+Next set of tests were oriented to explore the effect of picking-up/down on the precision of the system. In other words, will this process move the sample or not in XY plane. Due to the risk of breaking fragile silicon samples, we used glass ones.
 
 \subsection{Pick-up and -down precision tests without assembly platform}
 
@@ -96,22 +97,30 @@ The first pick-up/down test was done without assembly platform. The step-by-step
 \setlength\itemsep{-0.5em}
 \item Move to the image acquiring position.
 \item Acquire image and run pattern recognition.
-\item Move to pre-pickup position (!).
+\item Move to pre-pickup position.
 \item Move to pickup position.
 \item Turn negative vacuum on.
 \item Move up.
 \item Move down.
 \item Release vacuum.
 \item Move down.
-\item Move to pre-pickup position (!).
+\item Move to pre-pickup position.
 \item Move to the image acquiring position.
 \item Acquire image and run pattern recognition.
 \item Save data of the current iteration and go to the next one.
 \end{enumerate}
 
-One can notice the step of moving first to pre-pickup position before going to the pick-up position. This step is essential. The motion stage provides equal speed in all three axes, so when it receive a command to move to some position it starts to move with equal speed in each of three directions towards the destination simultaneously. As soon as destination in one axis is reached, it obviously stops moving in this axis while moving in other axes is going on. Therefore there is an unlike situation when the robotic arm reaches the sample in Z-axis while X and Y axes would still keep moving. To prevent such situation we added the step of moving to pre-pickup position.
+One can notice the step of moving first to pre-pickup position before going to the pick-up position and visa versa. This step is essential. The motion stage provides equal speed in all three axes, so when it receives a command to move to some position it starts to move with equal speed in each of three directions towards the destination simultaneously. As soon as destination in one axis is reached, it obviously stops moving in this axis while moving in other axes is going on. Therefore there is an unlike situation when the robotic arm reaches the sample in Z-axis while X and Y axes would still keep moving, which may cause damage or even break a sample. To prevent such situation we added the step of moving to pre-pickup position.
 
-The test showed significant movement of the sample
+The results of the test showed movement of the sample, which could be noticed with a naked eye. In order to minimize this movement we decided to make a touch test -- the same as pick-up and -down, but without vacuum. Such kind of test can show the contribution of the touch to the sample movement in the pick-up and -down test. The results if this test was quite similar to the previous test, which means that the touch itself contributes the most to the sample movements in the pick-up and -down test. The interesting fact of this movement is its trend. On Figure \ref{fig:touch_move} one can see X and Y movement trends with respect to iteration number in the touch test. This plots show that the movement is not random and it is more or less constant both in value and direction.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=1\linewidth]{Data/Precision_tests/XY_touch_movement.png}
+\caption{X and Y movement trends with respect to iteration number in the touch test.}
+\label{fig:touch_move}
+\end{figure}
+
+The most probable reason for such effect is that pick-up tool surface is not parallel to the table, where samples lay waiting for being picked-up. This fact perfectly corresponds to the constant movement of a sample to the one direction. Unfortunately, it is very complicated to align this surface parallel enough to make sample movement negligible.
 
 \subsection{Pick-up and -down precision tests with assembly platform}
 
