@@ -120,7 +120,37 @@ The results of the test showed movement of the sample, which could be noticed wi
 \label{fig:touch_move}
 \end{figure}
 
-The most probable reason for such effect is that pick-up tool surface is not parallel to the table, where samples lay waiting for being picked-up. This fact perfectly corresponds to the constant movement of a sample to the one direction. Unfortunately, it is very complicated to align this surface parallel enough to make sample movement negligible.
+The most probable reason for such effect is that pick-up tool surface is not parallel to the table, where samples lay waiting for being picked-up. This fact perfectly corresponds to the constant movement of a sample to the one direction. Unfortunately, it is very complicated to align this surface parallel enough to make sample movement negligible. Another way to avoid this movement is to use an assembly platform, which can hold samples with vacuum underneath so they would be fixed.
 
 \subsection{Pick-up and -down precision tests with assembly platform}
 
+The step-by-step outline of the pick-up and -down test with the assembly platform is very similar to the one without it. The only difference is that samples are always fixed by the underneath vacuum and are only released, when the vacuum from pick-up tool is provided, so it can lift the sample upwards.
+
+\begin{enumerate}
+\setlength\itemsep{-0.5em}
+\item Move to the image acquiring position.
+\item Acquire image and run pattern recognition.
+\item Move to pre-pickup position.
+\item Move to pickup position.
+\item Turn pick-up tool negative vacuum on.
+\item Turn assembly platform negative vacuum off.
+\item Move up.
+\item Move down.
+\item Turn assembly platform negative vacuum on.
+\item Turn pick-up tool negative vacuum off.
+\item Move down.
+\item Move to pre-pickup position.
+\item Move to the image acquiring position.
+\item Acquire image and run pattern recognition.
+\item Save data of the current iteration and go to the next one.
+\end{enumerate}
+
+Distribution of the difference between detected X coordinate of the master image before and after moving the arm in each iteration is shown on the Figure \ref{fig:platform_distribution}.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.8\linewidth]{Data/Precision_tests/Platform_x_distrib.png}
+\caption{Distribution of the difference between detected X coordinate of the master image before and after moving the arm in each iteration. $\Delta X \approx 4~um$. }
+\label{fig:platform_distribution}
+\end{figure}
+
+As one can see from the Figure \ref{fig:platform_distribution}, $\Delta X \approx 4~um$, which is very close to the limit of 1~um of the pattern recognition itself without touching the sample. Moreover, the X and Y coordinates show no trend with respect to the iteration number. Taking into account these results, it is possible to say that using an assembly platform can fix samples enough tight, so it is possible to neglect their movements.
