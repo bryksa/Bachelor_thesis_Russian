@@ -1,4 +1,4 @@
-\chapter{Precision estimation tests}
+\chapter{Precision estimation tests and the first prototype}
 The automated assembly system has a number of properties in terms of precision:
 \begin{enumerate}
 \setlength\itemsep{-0.5em}
@@ -154,3 +154,42 @@ Distribution of the difference between detected X coordinate of the master image
 \end{figure}
 
 As one can see from the Figure \ref{fig:platform_distribution}, $\Delta X \approx 4~um$, which is very close to the limit of 1~um of the pattern recognition itself without touching the sample. Moreover, the X and Y coordinates show no trend with respect to the iteration number. Taking into account these results, it is possible to say that using an assembly platform can fix samples enough tight, so it is possible to neglect their movements.
+
+\section{First assembled prototype}
+
+After all tests mentioned above it was possible to assemble the very first prototype of the module. To test the precision of the module for the first time it was decided to use simplified assembly algorithm, which would provide maximum precision only on one corner. Schematic view of the first module prototype is shown on the Figure \ref{fig:module_prototype}.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.8\linewidth]{Data/Precision_tests/Module_prototype.png}
+\caption{Schematic view of the first module prototype.}
+\label{fig:module_prototype}
+\end{figure}
+
+The step-by-step outline of the assembly process is listed below:
+
+\begin{enumerate}
+\setlength\itemsep{-0.5em}
+\item \textit{Place and align top sample parallel to X-axis of motion stage and take it with pick-up tool.} Place top sample on the assembly platform and fix it with vacuum. Find with the pattern recognition its orientation in space. Rotate the platform to align top sample parallel to the edge of the pick up tool. As soon as theta recognition do not provide enough accuracy, the following method was used. Move camera for 5~cm along the sample edge and measure the shift of the sample edge. Knowing two cathetus of it is possible to find the angle of the right triangle, which equals to the angle between sample edge and x-axis of motion stage. Rotate the assembly platform for this angle. To sum-up, first -- rough top sample orientation estimation with direct pattern recognition, second -- precise calculated sample orientation with Pythagorean theorem. Now the top sample is aligned enough parallel to the X-axis of the motion stage. Next, save position of the reference corner with a pattern recognition. Finally, pick-up top sample with pick-up tool and leave it there.
+\item \textit{Place Al spacers.} Put Al spacers to the inserts, fix them with bottom vacuum and align them parallel to the X-axis of the motion stage. Absolutely the same way as with top sample. Save the coordination of the reference corner with pattern recognition. Comparing coordinates of the reference corners of Al spacer and top sample, move the robotic arm in XY plane of the motion stage so they would match.
+\item \textit{Glue Al spacers to the top sample.} Place the glue on Al spacers and move robotic arm with attached top sample down. It is important to move robotic arm down for exactly correct distance. This topic was discussed in details in the Module Assembly Chapter. Wait glue to be cured and lift glued structure (Al spacers and top sample) from assembly platform.
+\item \textit{Place and align bottom sample parallel to X-axis of motion stage.} Place bottom sample on the assembly platform and fix it with bottom vacuum. Make the parallel alignment to the X-axis with the same method as with top sample. Find XY coordinates of the reference corner with the pattern recognition. Compare them to XY coordinates of spacers and top sample. Move the robotic arm with attached structure glued before to match reference corners of all parts of the module.
+\item \textit{Final gluing.} Put the glue on the bottom sample and move robotic arm down for correct distance to glue entire prototype. After glue is cured the assembly process is finished.
+\end{enumerate}
+
+The glued prototype is shown on Figure \ref{fig:module_prototype}.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=1\linewidth]{Data/Precision_tests/Prototype_photo.png}
+\caption{Photo of the first assembled prototype.}
+\label{fig:module_prototype}
+\end{figure}
+
+We used simplified algorithm for the first prototype assembly aligning only one corner. The quality of assembled prototype is very promising. It meet all necessary requirements. On the Figure \ref{fig:prototype_macro} one can see the photo of the reference corner from the microscope. Pictures form other directions look very similar having approximately the same accuracy.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=1\linewidth]{Data/Precision_tests/Top_sensor_X_view.png}
+\caption{Microscope photo of the reference corner of the first prototype. Misalignment of the components is around 20~um.}
+\label{fig:prototype_macro}
+\end{figure}
+
+This assembled prototype proofed the feasibility of the automated assembly and showed lots of issues to be solved in future. Even though it has only silver pained corner, not precise lithography, this prototype showed very good results.
