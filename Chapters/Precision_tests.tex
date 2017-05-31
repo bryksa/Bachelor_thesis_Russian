@@ -56,7 +56,7 @@ After each step software saves the difference between measured coordinates befor
 \label{fig:corner_theta}
 \end{figure}
 
-Looking at the Figures \ref{fig:corner_x} and \ref{fig:corner_y} one can see that the X, Y detection of the pattern recognition has enough good precision (\underline{1-2~um of error [?]}), while the theta detection results do not look so precise. There are several reasons of such behaviour. The main one them is shown on the Figure \ref{fig:corner_threshold}.
+Looking at the Figures \ref{fig:corner_x} and \ref{fig:corner_y} one can see that the X, Y detection of the pattern recognition has precision of around 1-2~um, while the theta detection results do not look so precise. There are several reasons of such behaviour. The main one them is shown on the Figure \ref{fig:corner_threshold}.
 
 Silver painted surface is not flat in 10~um scale. Due to this roughness different amount of light reflects to the camera from different points along the painted surface. That is why the painted corner contains various shades of grey, which in some points are darker, than the table underneath the sample (background). All these result into the picture one can see in the Figure \ref{fig:corner_threshold}. This kind of pictures has random distribution of dark areas on it. That is why the pattern recognition algorithm has such error while comparing two pictures (master template and acquired image) with random distribution of black areas. Moreover, this kind of tests lasts around one hour, which is long enough for the sun to change the ambient light in the laboratory. Even though all reasonably possible measures were done to prevent such effect, the acquired image is very sensitive for light. For example, the effect of the sun light can results in the threshold variation for 20 units (the color depth is 256) even with covered window in the laboratory.
 
@@ -86,11 +86,11 @@ A screenshot of the application during the test is shown on the Figure \ref{fig:
 \label{fig:zero_peak}
 \end{figure}
 
-\section{Pick-up and -down precision tests}
+\section{Pickup precision tests}
 
-Next set of tests were oriented to explore the effect of picking-up/down on the precision of the system. In other words, will this process move the sample or not in XY plane. Due to the risk of breaking fragile silicon samples, we used glass ones.
+Next set of tests were oriented to explore the effect of pickup and setdown on the precision of the system. In other words, will this process move the sample or not in XY plane. Due to the risk of breaking fragile silicon samples, we used glass ones.
 
-\subsection{Pick-up and -down precision tests without assembly platform}
+\subsection{Pickup precision tests without assembly platform}
 
 The first pick-up/down test was done without assembly platform. The step-by-step outline of this test is listed below:
 \begin{enumerate}
@@ -110,9 +110,9 @@ The first pick-up/down test was done without assembly platform. The step-by-step
 \item Save data of the current iteration and go to the next one.
 \end{enumerate}
 
-One can notice the step of moving first to pre-pickup position before going to the pick-up position and visa versa. This step is essential. The motion stage provides equal speed in all three axes, so when it receives a command to move to some position it starts to move with equal speed in each of three directions towards the destination simultaneously. As soon as destination in one axis is reached, it obviously stops moving in this axis while moving in other axes is going on. Therefore there is an unlike situation when the robotic arm reaches the sample in Z-axis while X and Y axes would still keep moving, which may cause damage or even break a sample. To prevent such situation we added the step of moving to pre-pickup position.
+One can notice the step of moving first to pre-pickup position before going to the pickup position and visa versa. This step is essential. The motion stage provides equal speed in all three axes, so when it receives a command to move to some position it starts to move with equal speed in each of three directions towards the destination simultaneously. As soon as destination in one axis is reached, it obviously stops moving in this axis while moving in other axes is going on. Therefore there is an unlike situation when the robotic arm reaches the sample in Z-axis while X and Y axes would still keep moving, which may cause damage or even break a sample. To prevent such situation we added the step of moving to pre-pickup position.
 
-The results of the test showed movement of the sample, which could be noticed with a naked eye. In order to minimize this movement we decided to make a touch test -- the same as pick-up and -down, but without vacuum. Such kind of test can show the contribution of the touch to the sample movement in the pick-up and -down test. The results if this test was quite similar to the previous test, which means that the touch itself contributes the most to the sample movements in the pick-up and -down test. The interesting fact of this movement is its trend. On Figure \ref{fig:touch_move} one can see X and Y movement trends with respect to iteration number in the touch test. This plots show that the movement is not random and it is more or less constant both in value and direction.
+The results of the test showed movement of the sample, which could be noticed with a naked eye. In order to minimize this movement we decided to make a touch test -- the same as pickup and setdown, but without vacuum. Such kind of test can show the contribution of the touch to the sample movement in the pick-up and -down test. The results if this test was quite similar to the previous test, which means that the touch itself contributes the most to the sample movements in the pick-up and -down test. The interesting fact of this movement is its trend. On Figure \ref{fig:touch_move} one can see X and Y movement trends with respect to iteration number in the touch test. This plots show that the movement is not random and it is more or less constant both in value and direction.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=1\linewidth]{Data/Precision_tests/XY_touch_movement.png}
@@ -120,11 +120,11 @@ The results of the test showed movement of the sample, which could be noticed wi
 \label{fig:touch_move}
 \end{figure}
 
-The most probable reason for such effect is that pick-up tool surface is not parallel to the table, where samples lay waiting for being picked-up. This fact perfectly corresponds to the constant movement of a sample to the one direction. Unfortunately, it is very complicated to align this surface parallel enough to make sample movement negligible. Another way to avoid this movement is to use an assembly platform, which can hold samples with vacuum underneath so they would be fixed.
+The most probable reason for such effect is that pickup tool surface is not parallel to the table, where samples lay waiting for being picked-up. This fact perfectly corresponds to the constant movement of a sample to the one direction. Unfortunately, it is very complicated to align this surface parallel enough to make sample movement negligible. Another way to avoid this movement is to use an assembly platform, which can hold samples with vacuum underneath so they would be fixed.
 
 \subsection{Pick-up and -down precision tests with assembly platform}
 
-The step-by-step outline of the pick-up and -down test with the assembly platform is very similar to the one without it. The only difference is that samples are always fixed by the underneath vacuum and are only released, when the vacuum from pick-up tool is provided, so it can lift the sample upwards.
+The step-by-step outline of the pickup and setdown test with the assembly platform is very similar to the one without it. The only difference is that samples are always fixed by the underneath vacuum and are only released, when the vacuum from pick-up tool is provided, so it can lift the sample upwards.
 
 \begin{enumerate}
 \setlength\itemsep{-0.5em}
@@ -137,7 +137,7 @@ The step-by-step outline of the pick-up and -down test with the assembly platfor
 \item Move up.
 \item Move down.
 \item Turn assembly platform negative vacuum on.
-\item Turn pick-up tool negative vacuum off.
+\item Turn pickup tool negative vacuum off.
 \item Move down.
 \item Move to pre-pickup position.
 \item Move to the image acquiring position.
