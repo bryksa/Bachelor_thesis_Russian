@@ -42,7 +42,7 @@ Depending on the application logic and demands, Model, View and Controller follo
 
 \emph{Controller} is mainly responsible for accepting input and processing it, generating commands for the Model or the View. For instance, \emph{ConradManager} provides all necessary functions to control the vacuum lines and to get the current status of it. It is worth noting that very often there is no direct connection between the Model and the View, like it is shown in the classical MVC architecture in the Figure \ref{fig:mvc_general}. Instead of it, the Controller acts as the intermediary between the application's model objects and its view objects.
 
-\section{OpenCV library}
+\subsection{OpenCV library}
 
 A lot of algorithms needed for the application were found in the open-source library~---~OpenCV (\textit{Open Source Computer Vision}). It is a cross-platform library of programming functions mainly oriented on real-time computer vision. It was originally developed by Intel's research center in Nizhny Novgorod (Russia). Later it was supported by Willow Garage and is now maintained by Itseez. The library is free for use under the open-source BSD license~\cite{OpenCV_general}.
 
@@ -87,7 +87,7 @@ This is done by processing the images of \emph{fiducial markers} at the corners 
 \item Location of other corners and extraction of final position and orientation.
 \end{enumerate}
 
-\subsection{Step 1. Pre-processing of raw image}
+\subsection{Pre-processing of raw image}
 The raw images from the camera are first converted from colour to black and white which is known as \emph{grayscaling} in OpenCV. The pixels comprising the grayscaled image contain intensity information only in the form of a single number ranging from 0 to 255 describing the darkness of a shade of gray as opposed to the intensity and colour information contained in the pixels of a colour image. As the corner markers are based on simple shapes and not colours, the colour information is not helpful and is thus disregarded. The grayscaled image is then converted to a \emph{binary} image in which each pixel is either black or white in a process known as \emph{thresholding}. Thresholding simply converts each pixel of the image into a white(black) pixel if the intensity of the pixel is above(below) a pre-defined threshold (). Thresholding serves to reduce the differences between images of identical sensors due to random \emph{noise} arising from dust and random differences in the surfaces of the patterned sensors. Examples of grayscaled and thresholded images of the same corner marker of a dummy PS sensor is shown in Figure \ref{fig:threshold}. The optimal threshold will depend on the ambient lighting conditions around the assembly area and and the contrast of the fiducial markings on the sensors. Currently, typical values of threshold are around 90.
 
 \begin{figure}[ht]\centering
@@ -96,7 +96,7 @@ The raw images from the camera are first converted from colour to black and whit
 \label{fig:threshold}
 \end{figure}
 
-\subsection{Step 2. Determination of positions and planar orientations of fiducial markers.}
+\subsection{Determination of positions and planar orientations of fiducial markers.}
 The position and orientation of the fiducial marker within the thresholded image is determined using a standard image processing technique known as \emph{template matching}. In template matching, parts of an master image that closely resemble a template image are located. In this case, the master image corresponds to the thresholded image of the fiducial marker and the template image corresponds to a thresholded image of a fiducial marker.
 
 Template matching proceeds by iteratively superimposing the template image at each point of the master image and calculating a metric which describes the similarity of the template image and the portion of the master image with which it coincides. The OpenCV package provides multiple options for the metric. Similar results are observed for each possible metric with the chosen metric based on the normalised squared difference between the intensities of coincident pixels of the master image and superimposed template:
@@ -123,19 +123,12 @@ In order to deduce the orientation of the marker in the plane transverse to the 
 \label{fig:template_rotation}
 \end{figure}
 
-\subsection{Step 3. Location of other corners and extraction of final position and orientation.}
+\subsection{Location of other corners and extraction of final position and orientation.}
 The procedure described in step 2 is repeated at each sensor corner. The planar orientations determined at given corner are used to set the direction of movement needed for the motion stage to automatically travel to an adjacent corner. The final position and orientation of the sensor is determined by a $\chi^{2}$ fit to the four (x,z) points. The orientation determined from the fit is cross-checked with the estimations of the orientation at the corners which accuracy could be not far from $\chi^{2}$ deduced. If there is agreement between the fit and four corner orientations, the fit results are used.
 
-\subsection{Threshold}
-
-
+\section{Application functionality}
 
 \subsection{Autofocus}
-
-
-
-
-\section{Application functionality}
 
 \subsection{Acquire image}
 

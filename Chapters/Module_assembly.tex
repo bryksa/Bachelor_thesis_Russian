@@ -16,7 +16,7 @@ With such method of assembly all parts are placed in the jig and glued together 
 
 However such method of module assembly has a number of disadvantages. It is relatively slow and does not scale well for high number of modules to assemble. In addition, such mechanical system has poor repeatability and has no options to control the process. Moreover, it needs very precise machining technologies (several microns precision) to manufacture this mechanical jig, as well as regular calibration of reference stops positions. Finally, this mechanical system need maximum manual handling and highly depends on human operating it. This fact means that even though in theory system can provide required quality of the assembled modules, there will be always more or less several percentage of modules assembled out of required quality only because of a human mistake.
 
-\section{Automated assembly}
+\section{Automated assembly system}
 
 The proposed automated assembly system consists of three sub-systems: the motion subsystem, the vision subsystem and the vacuum subsystem (Figure \ref{fig:auto_assembly_system})\cite{AutomatedAssembly_tutorial}.
 
@@ -37,18 +37,6 @@ The motion system provides the precise mechanical movements needed to arrange th
 The pickup procedure is performed by contacting the suction cups with the sensor, switching on the vacuum within the pickup tool and moving the arm directly upwards with the sensor attached. The setdown procedure is performed by contacting the mounted sensor (or baseplate) with the lower surface on which the component will be placed, switching off the vacuum in the pickup tool and moving the arm away. In order to avoid any movement of the component as the arm moves away, the component will be fixed in its setdown position with a separate array of upward-facing suction cups and independent vacuum line. The vision system acquires images of components allow determination of their positions and orientations which is crucial for precise assembly.
 
 The vision system consists is represented by high-resolution camera by IDS. The camera is mounted on the arm and is referred to as the mobile camera. It is fixed in a downward-facing orientation. The camera acquires images immediately before pickups and immediately after setdowns in order to determine the positions of unmounted components. 
-
-\section{Automated assembly steps}
-
-[Perhaps I should put this section later...?]
-Steps [list]:
-1) Spacers to platform
-2) Glue upper sensor to spacers
-3) Rotate 90 degrees
-4) Remove spacer+upper sensor
-5) Put baseplate on the assembly platform
-6) Glue bottom sensor (bare module) to the baseplate
-7) Glue Upper sandwich to the bottom one.
 
 \section{Assembly platform}
 
@@ -128,3 +116,19 @@ Talking about interaction with the main guideline adhesive, a series of test was
 \end{enumerate}
 
 To conclude, Loxeal fast adhesive clearly showed better qualities among other adhesives and fulfil all the requirements: it provides reasonable bond after 15 minutes and light pressure (around $20~g/cm^{2}$), has thin glue layer -- $<~20~um$ and show no interaction with the main guideline adhesive (touching the main adhesive).
+
+\section{Automated assembly process}
+
+Automated assembly process of a PS module consists of following steps:
+
+\begin{enumerate}
+\setlength\itemsep{-0.5em}
+\item \emph{Prepare top sensor.} Firstly, put manually the top sensor to the platform and fix it with the vacuum. Next, detect its location and orientation with a help of camera and special software and save the data. Correct the orientation of the sensor with a help of rotation stage so thus it will be parallel to the X-axis of the motion stage. Finally, pick it up with the pickup tool and leave it attached to it. The vacuum on the pick up tool will remain applied during the whole assembly process beginning from this very first step.
+\item \emph{Prepare spacers.} Once the top sensor removed from the platform and attached to the pickup tool, the platform should rotate by 90~degrees so that spacers can take their spots with the correct orientation relatively to the top sensor. Next, gently pushed to the reference stops and got fixed with the vacuum from the platform. Then the system should find and locate the reference marker on the platform thus being able to deduce the location of the spacers.
+\item \emph{Glue top sensor to spacers.} Once both top sensor and spacers are ready and their locations are identified, the software can easily calculated the path for the pickup tool with attached top sensor on it. Next is to put the main adhesive and several drops of the fast adhesive on the spacers and move the pickup tool to the calculated gluing position. Special attention should be paid for Z coordinates of pickup tool moving as soon as it directly influence the thickness of the glue layer.
+\item \emph{Prepare bottom sensor.} After about 15~minutes the fast adhesive drops are cured and provide reasonable bond to remove just glued spacers with top sensor. To do this pickup tool should simply move upwards with vacuum remaining applied. After the platform is cleared it should rotate by 90~degrees so that the bottom sensor can be placed and fixed with the vacuum. Next, just as for top sensor, detect its location and orientation with a help of camera and special software and save the data. Correct the orientation of the sensor with a help of rotation stage so thus it will be parallel to the X-axis of the motion stage which means parallel to the top sensor.
+\item \emph{Glue bottom sensor to spacers~+~top~sensor.} All the required components for this step are fixed and theirs locations are identified. Hence the software is able to calculate the path for the pickup tool. Finally, pickup tool can move to the gluing position after applying main and fast adhesives.
+\item \emph{Prepare baseplate.} After about 15-minutes glued structure can be lifted up with the pick up tool and its vacuum still remaining applied. Next is placing the baseplate paying attention for three reference pins and fix it with vacuum. These pins are not exist in the current version of the assembly platform as soon as gluing baseplate to the sensor-spacers-sensor (bare module) is not a high priority for the current state of the project. The reason for that -- baseplate gluing do not required so high accuracy as bare module.
+\item \emph{Glue sensor-spacers-sensor structure (bare module) to the baseplate.} As soon as the software has already known the position of the reference marker on the assembly platform, hence it is able to calculate the location of the baseplate and the gluing position of the pickup tool with bare module attached to it. Finally, the pickup tool moves to the gluing position after applying main and fast adhesives.
+\item \emph{Automated assembly is done.} After about 15 minutes fast adhesive provides enough bond and the assembled module (a part of it to be precise) can be removed from assembly platform and left for 24~hours to let the main adhesive cure. However, baseplate's reference pins fits the baseplate very tight thus manual removing can likely cause break. That is why it is better to remove the module with a pick-up tool as soon as it can provide perpendicular lift which is safer.
+\end{enumerate}
