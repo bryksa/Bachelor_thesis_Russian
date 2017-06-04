@@ -1,23 +1,21 @@
-\chapter{Introduction}
+\chapter{Введение}
+
+Большой адронный коллайдер (БАК) -- крупнейший ускоритель частиц в мире. Во время его первого периода работы с 2010 по 2013 с его помощью были сделаны выдающиеся достижения. Возможно одно из наиболее известных -- открытие теоретически предсказанного бозона Хиггса, за что Франсуа Энглер (François Englert) and Питер Хиггс (Peter Higgs) была присуждена Нобелевская премия по физике в 2013 году. Исследование явлений при столкновении частиц высоких энергий БАК происходит в четырёх позициях, расположенных вдоль основного кольца ускорителя и соответствующих четырём детекторам частиц -- ATLAS, CMS, ALICE и LHCb \cite{ref_cern_home}.
 
 
-The Large Hadron Collider (LHC) is the largest particle accelerator in the world. During the first run of it from 2010 to 2013 its experiments had made remarkable achievements. Perhaps one of the most famous is the discovery of the theorised Higgs particle, which resulted in the Nobel Prize in Physics in 2013 being awarded to François Englert and Peter Higgs. The LHC are made to collide particles at four locations around the accelerator ring, corresponding to the positions of four particle detectors – ATLAS, CMS, ALICE and LHCb \cite{ref_cern_home}.
+\section{Компактный мюонный соленоид}
 
-
-\section{Compact Muon Solenoid}
-
-
-The Compact Muon Solenoid (CMS) is a cylindrical particle detector designed to measure a wide range of particles produced in the collisions of LHC. The size of the detector is around 28 m long and 15 m in diameter. It is the heaviest detector in the world and weighs approximately 14000 t. The name "CMS" originates from the three key characteristics of the detector: its relatively compact size, its excellent capabilities in the detection and measurement of muons and its central feature, a superconducting 3.8T solenoid magnet.
+Компактный мюонных соленоид (Compact Muon Solenoid или CMS) -- это цилиндрический детектор элементарных частиц, разработанный для измерения широкого спектра параметров различных элементарных частиц, производимых во время столкновений (коллизий) протонов и/или тяжёлых ионов БАК. Детектор имеет длину около 28~метров и диаметр около 15~метров. Он является самым тяжёлым детектором элементарных частиц в мире и весит приблизительно 14000~тонн. Своё имя CMS детектор получил благодаря его 3-м ключевым характеристикам: его относительно компактный размер, его исключительная способность в детектировании и измерении мюонов и третья, его основная особенность, -- сверхпроводящий соленоид, способный создать магнитное поле до 3.8~Т.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.9\linewidth]{Data/Introduction/CMS_layers.png}
-\caption{A cross-sectional view of the CMS detection layers.}
+\caption{Вид на слои CMS детектора в поперечном разрезе.}
 \label{fig:cms_layers}
 \end{figure}
 
-The CMS detector consists of many separate detector layers, each of them playing an individual role in detecting and measuring the traversing particles. A cross-sectional overview of the layers and its tasks in reconstructing tracks of particles is shown in the Figure \ref{fig:cms_layers}.
+CMS детектор состоит из нескольких слоёв, каждый из которых выполняет свою отдельную роль в детектировании и измерении пролетающих сквозь них элементарны частиц. Схематическое изображение поперечного сечения данных слоёв и их задачи в восстановлении пути элементарной частицы показаны на Рисунке \ref{fig:cms_layers}.
 
-\section{Phase II Upgrade of CMS Tracker}
+\section{Вторая стадия модернизации CMS трекера}
 
 After Phase II Upgrade, the LHC will provide a much higher luminosity. This regime is known as the High Luminosity LHC (HL-LHC). A serious problem presented by these conditions is the enormous data readout rates that exceed far beyond the bandwidth foreseen for the readout electronics.
 However, the vast majority particles produced in the HL-LHC conditions are not of direct interest for new physics searches and are characterized by low transverse momentum. Thus rejecting tracker “hits” related to low transverse momentum particles can significantly reduce the amount of data to be readout. In order to provide momentum discrimination at the hardware level, a 2-layer module design was created. The central idea of the new modules is to provide fast discrimination between low and high transverse momentum particles by estimating the track curvature caused by the magnetic field within the volume of the module itself. For example, particle with high transverse momentum after hitting some pixel/strip at the first sensor layer would hit on of neighboring pixels/strips of the respective pixel/strip on the second layer. While a particle with low transverse momentum would have a more curved trajectory an hit pixel/strips at a displaced position from the first hit. By varying the distance between sensors and number of neighboring pixel/strips required to match hits in adjacent sensors, (2 neighboring strips in the Figure \ref{fig:low_high_pT}) it is possible to set the transverse momentum threshold for a hit~\cite{CMS_TECH_PHASE_II}.
