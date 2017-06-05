@@ -40,8 +40,8 @@
 
 \newcommand\btypeout[1]{\bhrule\typeout{\space #1}\bhrule}
 \def\today{\ifcase\month\or
-  January\or February\or March\or April\or May\or June\or
-  July\or August\or September\or October\or November\or December\fi
+  Январь\or Февраль\or Март\or Апрель\or Май\or Июнь\or
+  Июль\or Август\or Сентябрь\or Октябрь\or Ноябрь\or Декабрь\fi
   \space \number\year}
 \usepackage{setspace}
 \onehalfspacing
@@ -150,17 +150,17 @@
 \degree      {}
 \authors     {}
 \university  {\texorpdfstring{\href{University Web Site URL Here (include http://bsu.by/en/main.aspx)}
-                {Belarusian State University}}
-                {Belarusian State University}}
+                {Белорусский Государственный Университет}}
+                {Белорусский Государственный Университет}}
 \UNIVERSITY  {\texorpdfstring{\href{University Web Site URL Here (include http://bsu.by/en/main.aspx)}
-                {BELARUSIAN STATE UNIVERSITY}}
-                {BELARUSIAN STATE UNIVERSITY}}
+                {БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ}}
+                {БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ}}
 \department  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://rfe.by/)}
-                {Department of Telecommunication and Information Technologies}}
-                {Department of Telecommunication and Information Technologies}}
+                {Кафедра телекоммуникаций и информационных технологий}}
+                {Кафедра телекоммуникаций и информационных технологий}}
 \DEPARTMENT  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://rfe.by/)}
-                {DEPARTMENT OF TELECOMMUNICATION AND INFORMATION TECHNOLOGIES}}
-                {DEPARTMENT OF TELECOMMUNICATION AND INFORMATION TECHNOLOGIES}}
+                {КАФЕДРА ТЕЛЕКОММУНИКАЦИЙ И ИНФОРМАЦИОННЫХ ТЕХНОЛОГИЙ}}
+                {КАФЕДРА ТЕЛЕКОММУНИКАЦИЙ И ИНФОРМАЦИОННЫХ ТЕХНОЛОГИЙ}}
 \group       {\texorpdfstring{\href{Research Group Web Site URL Here (include http://)}
                 {Research Group Name}}
                 {Research Group Name}}
@@ -168,11 +168,11 @@
                 {RESEARCH GROUP NAME (IN BLOCK CAPITALS)}}
                 {RESEARCH GROUP NAME (IN BLOCK CAPITALS)}}
 \faculty     {\texorpdfstring{\href{Faculty Web Site URL Here (include http://rfe.by/)}
-                {Faculty of Radiophysics and Computer Technologies}}
-                {Faculty of Radiophysics and Computer Technologies}}
+                {Факультет радиофизики и компьютерных технологий}}
+                {Факультет радиофизики и компьютерных технологий}}
 \FACULTY     {\texorpdfstring{\href{Faculty Web Site URL Here (include http://rfe.by/)}
-                {FACULTY OF RADIOPHYSICS AND COMPUTER TECHNOLOGIES}}
-                {FACULTY OF RADIOPHYSICS AND COMPUTER TECHNOLOGIES}}
+                {ФАКУЛЬТЕТ РАДИОФИЗИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}}
+                {ФАКУЛЬТЕТ РАДИОФИЗИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}}
 \addresses   {}
 \subject     {}
 \keywords    {}
@@ -200,11 +200,11 @@
       \smallskip
       {\LARGE \authornames \par}
       \vfill
-      {\large A thesis submitted in fulfillment for the \par}
-      {\large degree of Specialist \par}
+      {\large Дипломная работа соискателя\par}
+      {\large степени Специалиста \par}
       \bigskip
       \bigskip
-      {\large in the \par}
+      {\large на \par}
       {\large \facname \par}
       {\large \deptname \par}
       \bigskip
@@ -239,14 +239,14 @@
     \setlength{\parskip}{0pt}
     {\normalsize \UNIVNAME \par}
     \bigskip
-    {\huge{\textit{Abstract}} \par}
+    {\huge{\textit{Аннотация}} \par}
     \bigskip
     {\normalsize \facname \par}
     {\normalsize \deptname \par}
     \bigskip
     {\normalsize\bf \@title \par}
     \medskip
-    {\normalsize by \authornames \par}
+    {\normalsize \authornames \par}
     \bigskip
   \end{center}
 }

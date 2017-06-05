@@ -20,28 +20,31 @@ CMS детектор состоит из нескольких слоёв, каж
 After Phase II Upgrade, the LHC will provide a much higher luminosity. This regime is known as the High Luminosity LHC (HL-LHC). A serious problem presented by these conditions is the enormous data readout rates that exceed far beyond the bandwidth foreseen for the readout electronics.
 However, the vast majority particles produced in the HL-LHC conditions are not of direct interest for new physics searches and are characterized by low transverse momentum. Thus rejecting tracker “hits” related to low transverse momentum particles can significantly reduce the amount of data to be readout. In order to provide momentum discrimination at the hardware level, a 2-layer module design was created. The central idea of the new modules is to provide fast discrimination between low and high transverse momentum particles by estimating the track curvature caused by the magnetic field within the volume of the module itself. For example, particle with high transverse momentum after hitting some pixel/strip at the first sensor layer would hit on of neighboring pixels/strips of the respective pixel/strip on the second layer. While a particle with low transverse momentum would have a more curved trajectory an hit pixel/strips at a displaced position from the first hit. By varying the distance between sensors and number of neighboring pixel/strips required to match hits in adjacent sensors, (2 neighboring strips in the Figure \ref{fig:low_high_pT}) it is possible to set the transverse momentum threshold for a hit~\cite{CMS_TECH_PHASE_II}.
 
+После проведения второй стадии модернизации БАК будет обладать гораздо большей светимостью. Данный режим его работы получил название High Luminosity LHC (HL-LHC) (с англ. -- БАК на большой светимости). Серьёзной сложностью условий работы данного режима БАК является является намного больший поток производимых данных, который многократно превосходит пропускную способность электронных устройств ввода-вывода. Однако подавляющее большинство элементарных частиц, образованных в результате работы HL-LHC малоинтересны в текущих исследованиях физики высоких энергий и характеризуются низким поперечным импульса. Таким образом игнорируя попадания элементарных частиц с низким поперечным импульсом, можно значительно уменьшить объём считываемых данных. С целью обеспечения возможности распознавания момента импульса на уровне аппаратного обеспечения был создан проект двухслойных детектирующих модулей. Основная идея работы новых модулей состоит в разграничении проходящих частиц с низким и высоким поперечным импульсом основываясь на приближенном измерении кривизны траектории вызванной магнитным полем, в котором находится модуль. Например, частица с высоким поперечным импульсом после прохождения детектирующего пикселя/полоски первого сенсора пройдёт через соответствующий пиксель/полоску соседнего второго сенсора. В то время как частица с низким поперечным импульсом будет иметь большую кривизну траектории и пройдёт немного в стороне от соответствующего элемента первого сенсора на втором сенсоре. Варьируя расстояние между сенсорами и количество соседствующих детектирующих пикселей/полосок необходимых для сопоставления областей прохождения на смежных сенсорах модуля (2 соседних детектирующих полоски на Рисунке \ref{fig:low_high_pT}), возможно выставить пороговое значение поперечного импульса для проходящей частицы~\cite{CMS_TECH_PHASE_II}.
+
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Introduction/Low_high_pT.png}
-\caption{An example of distinguishing high and low transverse momentum. Particles, which hit any of two neighboring strips or the respective strip itself, would be record as high transverse momentum particles.}
+\caption{Пример разграничения высокого и низкого поперечного импульса. Частицы, которые пройдут в пределах двух соседних детектирующих полосок второго сенсора от соответствующий полоски первого сенсора, будут считаться как частицы с высоким поперечным импульсом.}
 \label{fig:low_high_pT}
 \end{figure}
 
 
-\textbf{Two layer Modules}
+\textbf{Двухслойный детектирующий модули}
 
-The CMS Phase-II Tracker will utilize two types of modules, 2S modules and PS modules. To achieve efficient rejection of low-pT (low transverse momentum) particles throughout the Tracker volume, modules in different regions will make use of a few different sensor spacings. For 2S (PS) modules, spacings of 1.8 and 4 mm (1.6, 2.6 and 4 mm) are foreseen. These modules will be used in the end-cap disks as well as the central barrel region of the Tracker. An exploded view of a PS module is shown in Figure \ref{fig:ps_exploaded}.
+Трекер CMS детектора второй стадии модернизации будет использовать два типа детектирующих модулей -- 2S модули и PS модули. Чтобы достигнуть эффективного распознавания частиц с низким поперечным импульсом по всему объёму трекера, в различных его частях сенсоры модулей будут располагаться на разном расстоянии друг от друга. Для 2S (PS) модулей расстояние будет варьироваться между 1.8 и 4~мм (1.6, 2.6 - 4~мм). PS модуль в разборном виде показан на Рисунке \ref{fig:ps_exploaded}.
+
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Introduction/PS_exploaded.png}
-\caption{Exploaded view of Pixesl Sensor Module.}
+\caption{PS модуль в разборном виде.}
 \label{fig:ps_exploaded}
 \end{figure}
 
-In the PS module, the sensors are glued to a carbon-fibre reinforced Aluminium (AL-CF) spacers which act as spacers and provide the thermal conductance crucial for the cooling of the module. The two sensors and spacers are in turn glued the carbon-fibre (CF) baseplate. This structure is henceforth referred to as the sensor-spacer-baseplate-assembly (SSBA). This project will focus on the assembly of the SSBA only. The precision requirements of the SSBA are shown in Figure \ref{fig:ps(2s)_precision}. For the PS module, the sensors must align to within 40 mm measured at the sensor’s short edge. This corresponds to a rotational alignment tolerance of 0.8 mrad \cite{AutomatedAssembly_tutorial}.
+В PS модуле сенсоры приклеены к распоркам изготовленных из алюминия, усиленного углеродным волокном. Они обеспечивают необходимую теплопроводность, остро необходимую для охлаждения модуля. Два сенсора вместе с распорками в свою очередь приклеены к опорной пластине из углеродного волокна. Эта структура впоследствии будет называться Сенсор-Распорка-Сенсор-Опора (СРСО). Данная работа ориентирована исключительно на сборку 
+СРСО. Требуемые допущения по точности сборки СРСО показаны на Рисунке \ref{fig:ps(2s)_precision}. Для PS модуля сенсоры должны быть расположены с относительной точностью в 40~мкм измеряя с короткой стороны. Данная точность соответствует максимальной неточности в относительном вращении сенсоров на величину 0.8~мрад \cite{AutomatedAssembly_tutorial}.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.4\linewidth]{Data/Introduction/PS(2S)_precision.png}
-\caption{The precision requirements of the assembly of PS
-and 2S modules.}
+\caption{Требования точности к сборке PS и 2S модулей.}
 \label{fig:ps(2s)_precision}
 \end{figure}
