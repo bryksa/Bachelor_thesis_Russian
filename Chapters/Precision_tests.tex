@@ -1,62 +1,69 @@
-\chapter{Precision estimation tests and the first prototype}
-The automated assembly system has a number of properties in terms of precision:
+\chapter{Тестирование системы и сборка первого прототипа}
+
+Система автоматизированной сборки обладает рядом свойств с точки зрения точность сборки:
 \begin{enumerate}
 \setlength\itemsep{-0.5em}
-\item Motion stage movement repeatability.
-\item Image acquiring repeatability.
-\item Precision of pattern recognition.
-\item Possible movements of a sensor while picking them up and down with the vacuum pick up tool.
+\item Повторяемость передвижений двигательной установки.
+\item Повторяемость съёмки изображений.
+\item Точность процедуры распознавания образов.
+\item Возможные движения сенсора во время его захвата и отпускания с помощью системы отрицательного давления.
 \end{enumerate}
 
-In order to investigate this properties a series of tests were done.
-\\Real sensors will be very thin (around 200~um). This fact makes them very fragile. Even though dummy sensors, which will be used for further experiments, is a bit thicker (around 300~um), they are still too fragile for the first tests, because the bottom surface of the pick up tool and the plane underneath testing samples are not yet parallel enough. That is why for the first pick up and down tests we used glass samples. They have the same dimensions and represent close enough the properties of silicon sensors. Moreover, they are much cheaper, so that in case of test failure (sample break) it will not be such a big problem as if silicon sample crashes. Despite all mentioned above, none of glass samples where crashed.
-\\Even though we did not do the pick up test with silicon samples, there is still an opportunity to get some information of the pick up and down precision of the silicon samples without direct tests with them. By making a full range of tests with glass samples, we will be able to say how pick up and down influences the precision. Based on this results we will be able to approximately predict the precision of pick up and down tests with silicon samples. Later, when parallelness of the bottom surface of the pick up tool and samples will be provided, we will be able to confirm the results of the prediction.
+С целью изучения данных свойств был проведён ряд тестов системы.
 
-\section{Pattern recognition precision tests}
+Настоящие сенсоры будут иметь очень малую толщину (200~мкм), что делает их очень хрупкими. Даже несмотря на то, что для тестов могут быть использованы фиктивные сенсоры, толщина которых составляет 300~мкм, они всё ещё слишком хрупки для первых тестов, во время которых вероятность нештатных ситуаций заметно выше. По этой причине для первых тестов захвата использовались использовались образцы из стекла. Они имеют такие-же размеры и достаточно близки по механическим свойствам с кремниевыми сенсорами. Более того, они заметно дешевле и, следовательно, в случае неудачного теста потеря стеклянного образца не так критична, как кремниевого фиктивного сенсора. Несмотря на всё, сказанное выше, ни один из стеклянных образцов не был разрушен во время тестов и тестовых сборок.
 
-For investigation of the pattern recognition precision the following tests were done. During these tests samples were not moved, so that the additional errors by vacuum pick up and down can be excluded.
+Хотя тесты захвата кремниевых сенсоров не проводились в виду рисков, возможность получения некоторой информации об их поведение в данном тесте можно спрогнозировать без непосредственного проведения теста. Проведя полный набор тестов со стеклянными образцами и проанализировав их результаты, можно будет сделать выводы о том, как процесс захвата и выпуска влияет на точность/позиционирование образца. Позднее, после точной калибровки параллельности нижней поверхности устройства захвата относительно поверхности сборочной платформы и проведения необходимых тестов программного обеспечения, можно будет уточнить предсказанные результаты с гораздо меньшими рисками неудачного исхода.
 
-\subsection{Pattern recognition on the painted corner of a glass dummy}
-In the very first test we investigated the pattern recognition on the corner of the sample. Thin pieces of glass with a silver painted corner (Figure \ref{fig:painted_corner}) were used for the tests as an approximation of a silicon sensor. Silver painted corner was used as a marker for pattern recognition to be found in the acquired image.  
+\section{Тест точность процедуры распознавания образов}
+
+С целью исследования точности процедуры распознавания образов ряд следующих тестов был проведён. В ходе этих тестов исследуемые образцы (и стеклянные, и кремниевые) оставались неподвижными, поэтому ошибки, вносимые нежелательным ожидаемым смещением образца во время процедуры захвата, исключаются.
+
+\subsection{Распознавание образов на угле стеклянного образца}
+
+В самом первом тесте точности распознавания образов в качестве маркеров стеклянных образцов просто использовались их углы. Для теста использовались тонкие образцы стекла с углами, покрашенными серебряной краской для лучшего контраста на бинарном изображении (Figure \ref{fig:painted_corner}).
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Painted_corner.png}
-\caption{Glass sample with silver painted corner.}
+\caption{Образцы стекла с углами, покрашенными серебряной краской.}
 \label{fig:painted_corner}
 \end{figure}
 
-The step-by-step outline of this test is listed below:
+Пошаговое описание теста приведено ниже:
+
 \begin{enumerate}
 \setlength\itemsep{-0.5em}
-\item Move to the image acquiring position.
-\item Acquire image and run pattern recognition.
-\item Move aside for 5~mm in all three axes.
-\item Move to the image acquiring position.
-\item Acquire image and run pattern recognition.
-\item Save data of the current iteration and go to the next one.
+\item Передвинуться в позицию для съёмки изображения.
+\item Сделать снимок и провести процедуру распознавания образов.
+\item Передвинуться на 5~мм по всем осям
+\item Вернуться в позицию для съёмки изображения.
+\item Сделать снимок и провести процедуру распознавания образов.
+\item Сохранить данные данной итерации и перейти к следующей.
 \end{enumerate}
 
-After each step software saves the difference between measured coordinates before and after moving the arm with the camera. The distributions of these values are showed in Figure \ref{fig:corner_x}, Figure \ref{fig:corner_y} and Figure \ref{fig:corner_theta} for X-axis, Y-axis and theta, respectively. The test had 100~iterations done in a row.
+После каждой итерации приложение сохраняет разницу между измеренными координатами маркера до и после перемещения роборуки. Итоговое распределение данных величин изображено на Рисунках \ref{fig:corner_x}, \ref{fig:corner_y} и \ref{fig:corner_theta} для оси X, Y и $\alpha$, соответственно. Тест состоял из 100 итераций, сделанных подряд.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Corner_c_x.png}
-\caption{Distribution of the difference between detected X coordinate of the master image before and after moving the arm in each iteration. $\Delta X \approx 1~um$. }
+\caption{Распределение разности по координате X до и после премещения роборуки. $\Delta X \approx 1~um$. }
 \label{fig:corner_x}
 \end{figure}
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Corner_c_y.png}
-\caption{Distribution of the difference between detected Y coordinate of the master image before and after moving the arm in each iteration. $\Delta Y \approx 2~um$.}
+\caption{Распределение разности по координате Y до и после премещения роборуки. $\Delta Y \approx 2~um$.}
 \label{fig:corner_y}
 \end{figure}
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Corner_c_theta.png}
-\caption{Distribution of the difference between detected angle orientation of the master image relatively to the acquired image before and after moving the arm in each iteration. $\Delta theta \approx 0.15 ~degree$. }
+\caption{Распределение разности значения определённого угла поворота между исследуемым изображением относительно шаблонного изображения до и после перемещения роборуки. $\Delta theta \approx 0.15 ~degree$. }
 \label{fig:corner_theta}
 \end{figure}
 
 Looking at the Figures \ref{fig:corner_x} and \ref{fig:corner_y} one can see that the X, Y detection of the pattern recognition has precision of around 1-2~um, while the theta detection results do not look so precise. There are several reasons of such behaviour. The main one them is shown on the Figure \ref{fig:corner_threshold}.
+
+На Рисунках \ref{fig:corner_x} и \ref{fig:corner_y} можно видеть, что повторяемость измерения координат X, Y находится в пределах 1-2~мкм, в то время как  
 
 Silver painted surface is not flat in 10~um scale. Due to this roughness different amount of light reflects to the camera from different points along the painted surface. That is why the painted corner contains various shades of grey, which in some points are darker, than the table underneath the sample (background). All these result into the picture one can see in the Figure \ref{fig:corner_threshold}. This kind of pictures has random distribution of dark areas on it. That is why the pattern recognition algorithm has such error while comparing two pictures (master template and acquired image) with random distribution of black areas. Moreover, this kind of tests lasts around one hour, which is long enough for the sun to change the ambient light in the laboratory. Even though all reasonably possible measures were done to prevent such effect, the acquired image is very sensitive for light. For example, the effect of the sun light can results in the threshold variation for 20 units (the color depth is 256) even with covered window in the laboratory.
 
