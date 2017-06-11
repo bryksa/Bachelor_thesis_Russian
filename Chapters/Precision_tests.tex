@@ -15,7 +15,7 @@
 
 Хотя тесты захвата кремниевых сенсоров не проводились в виду рисков, возможность получения некоторой информации об их поведение в данном тесте можно спрогнозировать без непосредственного проведения теста. Проведя полный набор тестов со стеклянными образцами и проанализировав их результаты, можно будет сделать выводы о том, как процесс захвата и выпуска влияет на точность/позиционирование образца. Позднее, после точной калибровки параллельности нижней поверхности устройства захвата относительно поверхности сборочной платформы и проведения необходимых тестов программного обеспечения, можно будет уточнить предсказанные результаты с гораздо меньшими рисками неудачного исхода.
 
-\section{Тест точность процедуры распознавания образов}
+\section{Тест точности процедуры распознавания образов}
 
 С целью исследования точности процедуры распознавания образов ряд следующих тестов был проведён. В ходе этих тестов исследуемые образцы (и стеклянные, и кремниевые) оставались неподвижными, поэтому ошибки, вносимые нежелательным ожидаемым смещением образца во время процедуры захвата, исключаются.
 
@@ -33,12 +33,12 @@
 
 \begin{enumerate}
 \setlength\itemsep{-0.5em}
-\item Передвинуться в позицию для съёмки изображения.
+\item Передвинуться в позицию для съёмки изображения маркера.
 \item Сделать снимок и провести процедуру распознавания образов.
 \item Передвинуться на 5~мм по всем осям
 \item Вернуться в позицию для съёмки изображения.
 \item Сделать снимок и провести процедуру распознавания образов.
-\item Сохранить данные данной итерации и перейти к следующей.
+\item Сохранить данные данной итерации и перейти к следующей (к шагу 1).
 \end{enumerate}
 
 После каждой итерации приложение сохраняет разницу между измеренными координатами маркера до и после перемещения роборуки. Итоговое распределение данных величин изображено на Рисунках \ref{fig:corner_x}, \ref{fig:corner_y} и \ref{fig:corner_theta} для оси X, Y и $\alpha$, соответственно. Тест состоял из 100 итераций, сделанных подряд.
@@ -61,142 +61,139 @@
 \label{fig:corner_theta}
 \end{figure}
 
-Looking at the Figures \ref{fig:corner_x} and \ref{fig:corner_y} one can see that the X, Y detection of the pattern recognition has precision of around 1-2~um, while the theta detection results do not look so precise. There are several reasons of such behaviour. The main one them is shown on the Figure \ref{fig:corner_threshold}.
+На Рисунках \ref{fig:corner_x} и \ref{fig:corner_y} можно видеть, что повторяемость измерения координат X, Y находится в пределах 1-2~мкм, в то время как измерения угла $\alpha$ показывает гораздо меньшую точность. На то есть несколько причин. Основная из них показана на Рисунке \ref{fig:corner_threshold}.
 
-На Рисунках \ref{fig:corner_x} и \ref{fig:corner_y} можно видеть, что повторяемость измерения координат X, Y находится в пределах 1-2~мкм, в то время как  
-
-Silver painted surface is not flat in 10~um scale. Due to this roughness different amount of light reflects to the camera from different points along the painted surface. That is why the painted corner contains various shades of grey, which in some points are darker, than the table underneath the sample (background). All these result into the picture one can see in the Figure \ref{fig:corner_threshold}. This kind of pictures has random distribution of dark areas on it. That is why the pattern recognition algorithm has such error while comparing two pictures (master template and acquired image) with random distribution of black areas. Moreover, this kind of tests lasts around one hour, which is long enough for the sun to change the ambient light in the laboratory. Even though all reasonably possible measures were done to prevent such effect, the acquired image is very sensitive for light. For example, the effect of the sun light can results in the threshold variation for 20 units (the color depth is 256) even with covered window in the laboratory.
+Поверхность серебряной краски не является достаточно ровной в масштабах микрометров. Из-за этих неровностей свет неравномерно отражается от поверхности, что приводит к тому, что на изображении угла в оттенках серого покрашенная поверхность в некоторых точках темнее поверхности (фон) под образцом. Результат данного эффекта можно наблюдать на Рисунке \ref{fig:corner_threshold}. Изображения такого рода имеют случайной распределение тёмных областей. Именно поэтому процесс распознавания образов выдают такие неточности сравнивая исследуемое изображение со \emph{случайным распределением} тёмных областей и шаблонного изображения с \emph{постоянным распределением} тёмных областей. Более того, для набора достаточного числа статистических данных тесты такого рода содержат большое количество итераций (100 в данном случае), что соответствует нескольким часам работы установки. Этого времени достаточно для того, чтобы естественное освещение в лаборатории изменилось. Несмотря на принятые меры изоляции установки от естественного освещения, оптимальное пороговое значение операции Thresholding изменилось на 20 единиц (глубина цвета изображения в оттенках серого -- 256 единиц) за время эксперимента.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Corner_thresholded.png}
-\caption{The view of the corner after applying the Threshold.}
+\caption{Бинарное изображение покрашенного угла стеклянного образца после применения процедуры Thresholding.}
 \label{fig:corner_threshold}
 \end{figure}
 
-\subsection{Pattern recognition on the marker of the dummy sensor}
+\subsection{Распознавание образов на маркере фиктивного сенсора}
 
-The same test, but with dummy silicon sensor and real marker on it, was done. Before the test marker was aligned as much close to zero degrees as possible. At the Figure \ref{fig:thresholded_marker} one can see that the edge of the marker after applying Threshold is almost perfect (+/- one pixel). This fact itself is already a proof that Threshold step of pattern recognition is feasible.
+Аналогичный предыдущему тест был проведён с фиктивным сенсором, имеющем действительный маркер. Для удобства проведения теста перед его началом сенсор был ориентирован как можно ближе к положению, соответствующему $\alpha=0$. На Рисунке \ref{fig:thresholded_marker} показан маркер фиктивного сенсора. После применения операции Thresholding граница маркера практически идеальна (+/- один пиксель). Данный факт подтверждает обоснованность применения операции Thresholding ещё до проведения тестов.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.6\linewidth]{Data/Precision_tests/Thresholded_marker.png}
-\caption{Sensor marker after applying Threshold.}
+\caption{Маркер фиктивного сенсора после проведения операции Thresholding.}
 \label{fig:thresholded_marker}
 \end{figure}
 
-The Distribution of X, Y coordinates and theta shows better results than with painted corner, which was expected. For X and Y it is less than a micron, which is already at the limit of camera resolution. $\Delta theta$ is one order of magnitude better than with painted corner --- $\approx 0.02  degree$.
+Распределение величин X,Y и $\alpha$ показывает намного лучшие результаты, чем с у покрашенного серебряной краской угла, что вполне ожидаемо. Для координат X и Y точность составляет меньше микрона, что уже граничит с пределом разрешающей способности камеры. $\Delta theta$  в свою очередь стала на один порядок точнее, чем у окрашенного угла стеклянного образца -- $\approx 0.02  degree$.
 
-A screenshot of the application during the test is shown on the Figure \ref{fig:zero_peak}. On the pattern recognition curve one can see that at 0 degree there is an unexpected short upward shot. This peak is not a fluctuation and it is not consist of only one point in the plot. As the scale increases, more points form this peak appear. It was not observed in the previous test just because the theta step was one order of magnitude bigger.
+Скриншот работы приложения во время теста изображён на Рисунке \ref{fig:zero_peak}. На графике распознавания образов в точке, соответствующей 0~градусов, можно заметить неожиданный короткий пик, направленный вверх. Данный пик не является флуктуацией и не состоит только из одной точки на графике. С увеличением масштаба графика, всё больше и больше точек начинают принимать участие в его формировании. Он не наблюдался в предыдущих тестах, так как шаг $\alpha$ был на порядок выше.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Upward_shot.png}
-\caption{Screenshot of application during precision estimation test with dummy silicon sensor and marker on it.}
+\caption{Скриншот работы приложения во время проведение теста точности и повторяемости с фиктивным кремниевым сенсором.}
 \label{fig:zero_peak}
 \end{figure}
 
-\section{Pickup precision tests}
+\section{Тест захвата образца}
 
-Next set of tests were oriented to explore the effect of pickup and setdown on the precision of the system. In other words, will this process move the sample or not in XY plane. Due to the risk of breaking fragile silicon samples, we used glass ones.
+Следующий ряд тестов был ориентирован на исследование эффекта нежелательного эффекта механического смещения образца во время его захвата и выпускания. В виду высокого риска механического повреждения сенсора использовались стеклянные образцы.
 
-\subsection{Pickup precision tests without assembly platform}
+\subsection{Тест захвата образца без помощи сборочной платформы}
 
-The first pick-up/down test was done without assembly platform. The step-by-step outline of this test is listed below:
+Самый первый тест захвата/выпускания был выполнен без помощи сборочной платформы. Его пошаговое описание приведено ниже:
+
 \begin{enumerate}
 \setlength\itemsep{-0.5em}
-\item Move to the image acquiring position.
-\item Acquire image and run pattern recognition.
-\item Move to pre-pickup position.
-\item Move to pickup position.
-\item Turn negative vacuum on.
-\item Move up.
-\item Move down.
-\item Release vacuum.
-\item Move down.
-\item Move to pre-pickup position.
-\item Move to the image acquiring position.
-\item Acquire image and run pattern recognition.
-\item Save data of the current iteration and go to the next one.
+\item Передвинуться в позицию съёмки изображения маркера.
+\item Сделать снимок и провести процедуру.
+\item Передвинуться в предварительную позицию захвата.
+\item Передвинуться в позицию захвата.
+\item Подать отрицательное давление на устройство захвата.
+\item Передвинуться вверх на 5~см.
+\item Передвинуться обратно вниз на 5~см.
+\item Отключить подачу отрицательного давления на устройство захвата.
+\item Передвинуться в предварительную позицию захвата.
+\item Передвинуться в позицию съёмки изображения маркера.
+\item Сделать снимок и провести процедуру
+\item Сохранить данные текущей итерации и перейти к следующей (к шагу 1).
 \end{enumerate}
 
-One can notice the step of moving first to pre-pickup position before going to the pickup position and visa versa. This step is essential. The motion stage provides equal speed in all three axes, so when it receives a command to move to some position it starts to move with equal speed in each of three directions towards the destination simultaneously. As soon as destination in one axis is reached, it obviously stops moving in this axis while moving in other axes is going on. Therefore there is an unlike situation when the robotic arm reaches the sample in Z-axis while X and Y axes would still keep moving, which may cause damage or even break a sample. To prevent such situation we added the step of moving to pre-pickup position.
+Перемещение сперва в предварительную позицию захвата перед непосредственным переходом к позиции захвата очень важно. Двигательная установка обеспечивает равную скорость движения по всем трём осям, поэтому, когда она получает команду для перемещения в какое-либо положение, то начинает двигаться одновременно с равной скоростью по всем трём осям к месту назначения. Как только необходимая координата на одной оси достигнута, двигательная установка, очевидно, перестает двигаться по этой оси, а движение по другим осям продолжается. Поэтому может возникнуть нежелательная ситуация, когда роботизированная рука достигает образца по оси Z, в то время как оси X и Y все равно будут двигаться, что может привести к повреждению или даже уничтожению образца. Чтобы предотвратить такую ситуацию, был добавлен шаг перехода в в предварительную позицию захвата, которая отличается от позиции захвата только координатой Z -- она на 5~см выше. Таким образом, из позиции предварительного захвата роборука перемещается строго вниз и безопасно касается образца для его захвата.
 
-The results of the test showed movement of the sample, which could be noticed with a naked eye. In order to minimize this movement we decided to make a touch test -- the same as pickup and setdown, but without vacuum. Such kind of test can show the contribution of the touch to the sample movement in the pick-up and -down test. The results if this test was quite similar to the previous test, which means that the touch itself contributes the most to the sample movements in the pick-up and -down test. The interesting fact of this movement is its trend. On Figure \ref{fig:touch_move} one can see X and Y movement trends with respect to iteration number in the touch test. This plots show that the movement is not random and it is more or less constant both in value and direction.
+Результаты теста показали смещение образца, которое можно было заметить даже невооруженным глазом. Чтобы свести к минимуму это движение, было решено провести "тест касанием" - те же этапы, что и у теста захвата, но без подачи отрицательного давления. Такой тип теста может показать вклад касания к перемещению образца в тесте захвата. Результаты этого теста были очень похожи на результаты предыдущего теста, что означает, что непосредственно касание сенсора вносит наибольший вклад в смещение образца во время процедуры захвата. Интересным фактом этого движения является его характер. На рисунке \ref{fig:touch_move} можно увидеть зависимость движения образца по осям X и Y относительно номера итерации в тесте. Эти графики показывают, что движение не является случайным, а является более-менее постоянным как по значению, так и по направлению.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=1\linewidth]{Data/Precision_tests/XY_touch_movement.png}
-\caption{X and Y movement trends with respect to iteration number in the touch test.}
+\caption{Движения образца по осям X и Y относительно номера итерации в тесте касанием.}
 \label{fig:touch_move}
 \end{figure}
 
-The most probable reason for such effect is that pickup tool surface is not parallel to the table, where samples lay waiting for being picked-up. This fact perfectly corresponds to the constant movement of a sample to the one direction. Unfortunately, it is very complicated to align this surface parallel enough to make sample movement negligible. Another way to avoid this movement is to use an assembly platform, which can hold samples with vacuum underneath so they would be fixed.
+Наиболее вероятной причиной такого поведения сенсора является антипараллельность поверхности устройства захвата и поверхности стола, на котором располагались образцы в данном тесте. Этот факт хорошо соответствует постоянному смещению образца в одном направлении. К сожалению, очень сложно выровнять эти поверхности достаточно параллельно, чтобы движение образца было незначительным, так как в любом случае положение образца будет представлять из себя неустойчивое равновесие. Другой, более простой и эффективный, способ избежать этого движения - использовать сборочную платформу, которая может удерживать образец отрицательным, не допуская какого либо их движения.
 
-\subsection{Pickup precision tests with assembly platform}
+\subsection{Тест захвата образца с помощью сборочной платформой}
 
-The step-by-step outline of the pickup and setdown test with the assembly platform is very similar to the one without it. The only difference is that samples are always fixed by the underneath vacuum and are only released, when the vacuum from pick-up tool is provided, so it can lift the sample upwards.
+Пошаговое описание тест захвата образца с помощью сборочной платформой очень похож на тест без неё. Различием между ними является постоянная фиксация образца отрицательным давлением снизу и его отпускание только после включения подачи отрицательного давления устройством захвата. Другим словами происходит процесс "передачи" образца сборочной платформой устройству захвата. 
 
 \begin{enumerate}
 \setlength\itemsep{-0.5em}
-\item Move to the image acquiring position.
-\item Acquire image and run pattern recognition.
-\item Move to pre-pickup position.
-\item Move to pickup position.
-\item Turn pick-up tool negative vacuum on.
-\item Turn assembly platform negative vacuum off.
-\item Move up.
-\item Move down.
-\item Turn assembly platform negative vacuum on.
-\item Turn pickup tool negative vacuum off.
-\item Move down.
-\item Move to pre-pickup position.
-\item Move to the image acquiring position.
-\item Acquire image and run pattern recognition.
-\item Save data of the current iteration and go to the next one.
+\item Передвинуться в позицию съёмки изображения маркера.
+\item Сделать снимок и провести процедуру.
+\item Передвинуться в предварительную позицию захвата.
+\item Передвинуться в позицию захвата.
+\item Подать отрицательное давление на устройство захвата.
+\item Отключить подачу отрицательного давление на сборочную платформу.
+\item Передвинуться вверх на 5~см.
+\item Передвинуться обратно вниз на 5~см.
+\item Подать отрицательное давление на сборочную платформу.
+\item Отключить подачу отрицательного давления на устройство захвата.
+\item Передвинуться в предварительную позицию захвата.
+\item Передвинуться в позицию съёмки изображения маркера.
+\item Сделать снимок и провести процедуру
+\item Сохранить данные текущей итерации и перейти к следующей (к шагу 1).
 \end{enumerate}
 
-Distribution of the difference between detected X coordinate of the master image before and after moving the arm in each iteration is shown on the Figure \ref{fig:platform_distribution}.
+Распределение разности между измеренной координатой X маркера до и после перемещения роборуки показано на Рисунке \ref{fig:platform_distribution}.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Platform_x_distrib.png}
-\caption{Distribution of the difference between detected X coordinate of the master image before and after moving the arm in each iteration. $\Delta X \approx 4~um$. }
+\caption{Распределение разности между измеренной координатой X маркера до и после перемещения роборуки. $\Delta X \approx 4~um$. }
 \label{fig:platform_distribution}
 \end{figure}
 
-As one can see from the Figure \ref{fig:platform_distribution}, $\Delta X \approx 4~um$, which is very close to the limit of 1~um of the pattern recognition itself without touching the sample. Moreover, the X and Y coordinates show no trend with respect to the iteration number. Taking into account these results, it is possible to say that using an assembly platform can fix samples enough tight, so it is possible to neglect their movements.
+Как можно видеть на Рисунке \ref{fig:platform_distribution}, $\Delta X \approx 4~um$, что очень близко к пределу процедуры распознавания образов ($\approx 1~um$) без касания образцы. Более того, Абсолютные значения измеренных координат X и Y показывают отсутствие какой либо зависимости от номера итерации, как в тесте без сборочной платформы. Принимая во внимания полученные результаты, можно утверждать, что сборочная платформа способна фиксировать образцы достаточно плотно, чтобы пренебречь их нежелательными механическими смещениями.
 
-\section{First assembled prototype}
+\section{Сборка первого прототипа}
 
-After all tests mentioned above it was possible to assemble the very first prototype of the module. To test the precision of the assembling module for the first time it was decided to use simplified assembly algorithm, which would provide maximum precision only on one corner. Schematic view of the first module prototype is shown on the Figure \ref{fig:module_prototype}.
+После всех выше упомянутых тестов было решено провести сборку первого прототипа модуля. Для проверки точности его сборки было принято решение использовать упрощенный алгоритм сборки, который обеспечивал бы максимальную точность только на одном из четырёх углов. Схематическое изображение первого прототипа модуля показано на рисунке \ref{fig:module_prototype}.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.8\linewidth]{Data/Precision_tests/Module_prototype.png}
-\caption{Schematic view of the first module prototype.}
+\caption{Схематическое изображение первого прототипа модуля.}
 \label{fig:module_prototype}
 \end{figure}
 
-The step-by-step outline of the assembly process is listed below:
+Пошаговое описание упрощённого процесса сборки описано ниже:
 
 \begin{enumerate}
 \setlength\itemsep{-0.5em}
-\item \textit{Place and align top sample parallel to X-axis of motion stage and lift it up with pick-up tool.} Place top sample on the assembly platform and fix it with vacuum. Find with the pattern recognition its orientation in space. Rotate the platform to align top sample parallel to the edge of the pick up tool. As soon as theta recognition do not provide enough accuracy, the following method was used. Move camera for 5~cm along the sample edge and measure the shift of the sample edge. Knowing two cathetus of it is possible to find the angle of the right triangle, which equals to the angle between sample edge and x-axis of motion stage. Rotate the assembly platform for this angle. To sum-up, first -- rough top sample orientation estimation with direct pattern recognition, second -- precise calculated sample orientation with Pythagorean theorem. Now the top sample is aligned enough parallel to the X-axis of the motion stage. Next, save position of the reference corner with a pattern recognition. Finally, pick-up top sample with pick-up tool and leave it there.
-\item \textit{Place Al spacers.} Put Al spacers to the inserts, fix them with bottom vacuum and align them parallel to the X-axis of the motion stage. Absolutely the same way as with top sample. Save the coordination of the reference corner with pattern recognition. Comparing coordinates of the reference corners of Al spacer and top sample, move the robotic arm in XY plane of the motion stage so they would match.
-\item \textit{Glue Al spacers to the top sample.} Place the glue on Al spacers and move robotic arm with attached top sample down. It is important to move robotic arm down for exactly correct distance. This topic was discussed in details in the Module Assembly Chapter. Wait glue to be cured and lift glued structure (Al spacers and top sample) from assembly platform.
-\item \textit{Place and align bottom sample parallel to X-axis of motion stage.} Place bottom sample on the assembly platform and fix it with bottom vacuum. Make the parallel alignment to the X-axis with the same method as with top sample. Find XY coordinates of the reference corner with the pattern recognition. Compare them to XY coordinates of spacers and top sample. Move the robotic arm with attached structure glued before to match reference corners of all parts of the module.
-\item \textit{Final gluing.} Put the glue on the bottom sample and move robotic arm down for correct distance to glue entire prototype. After glue is cured the assembly process is finished.
+\item \textit{Подготовить верхний стеклянный образец.} Поместить верхний образец на сборочную платформу и зафиксируйте его с помощью отрицательного давления. С помощью процедуры распознавания образов определить его ориентацию в пространстве. Так необходимая точность определения планарной ориентации не обеспечивается путём его определения по одному маркеру, то для уточнения этого значения использовался следующий метод. Переместить камеру на 5 см вдоль края образца и измерьте смещение края перпендикулярно движению. Пройденное расстояние и смещение образуют два катета прямоугольного треугольника, зная которые можно вычислить недостающий угол поворота между кромкой образца и осью X двигательной установки. Далее следует повернуть платформу на этот угол. Другими словами, сперва -- грубая оценка угла ориентации образца с помощью процедуры распознавания образов, после -- точное вычисления угла по теореме Пифагора. После того, как образец правильно сориентирован, необходимо сохранить координаты опорного угла образца и провести процедуру его захвата и подъёма.
+\item \textit{Подготовить алюминиевые распорки} Повернуть сборочную платформу на 90~градусов. Поместить алюминиевые распорки в выемки сборочной платформы, зафиксировать их отрицательным давлением и сориентировать их параллельно оси X двигательной установки. Данная процедура проделывается аналогично верхнему образцу. Однако стоит упомянуть, что достижение высокой точности в ориентации распорок не настолько важно, как для сенсоров в модуле. Далее следует сохранить координаты опорного угла распорок. Сравнивая эти координаты с координатами опорного угла верхнего образца, переместить роборуку в плоскости XoY для их совмещения.
+\item \textit{Произвести склеивание алюминиевых распорок с верхним образцом.} Нанести клеящее вещество на распорки и переместить вниз роборуку с прикреплённым к ней верхним образцом. Очень важно переместиться вниз на корректное расстояние. Данная тема была подробнее обсуждена в Главе 2. Далее необходимо выждать время высыхания быстросохнущего клеящего вещества (около 15~минут) и поднять полученную структуру (две алюминиевые распорки + верхний образец) со сборочной платформы, предварительно выключив подачу отрицательного давления в платформе.
+\item \textit{Подготовить нижний стеклянный образец.} Повернуть сборочную платформу на 90~градусов в противоположном направлении. Поместить нижний образец на сборочную платформу и зафиксировать его отрицательным давлением. По примеру верхнего образца провести ориентирование нижнего образца параллельно оси X двигательной установки. Измерить координаты опорного угла нижнего образца и сопоставить их с координатами верхнего. Переместить роборуку так, чтобы они совмещались.
+\item \textit{Финальное склеивание.} Нанести клеящее вещество на нижний образец и переместить роборуку вниз на корректную дистанцию, учитывая толщины распорок, стеклянных образцов и желаемого слоя клеящего вещества. После высыхания вещества процесс автоматизированной сборки можно считать оконченным.
 \end{enumerate}
 
-The glued prototype is shown on Figure \ref{fig:module_prototype}.
+Собранный прототип изображён на Рисунке \ref{fig:module_prototype}.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=1\linewidth]{Data/Precision_tests/Prototype_photo.png}
-\caption{Photo of the first assembled prototype.}
+\caption{Фото первого собранного прототипа PS модуля.}
 \label{fig:module_prototype}
 \end{figure}
 
-We used simplified algorithm for the first prototype assembly aligning only one corner. The quality of assembled prototype is very promising. It meet all necessary requirements. On the Figure \ref{fig:prototype_macro} one can see the photo of the reference corner from the microscope. Pictures form other directions look very similar having approximately the same accuracy.
+Использованный упрощённый алгоритм автоматизированной сборки рассчитан на точное позиционирование только одного угла прототипа. Качество собранного прототипа выглядит многообещающим. Оно удовлетворяет всем требованиям. На Рисунке \ref{fig:prototype_macro} изображено фото опорного угла под микроскопом. Параметры угла с других направлений выглядят схоже, имея приблизительно одинаковую точность.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=1\linewidth]{Data/Precision_tests/Top_sensor_X_view.png}
-\caption{Microscope photo of the reference corner of the first prototype. Misalignment of the components is around 20~um.}
+\caption{Фото опорного угла собранного прототипа под микроскопом. Несогласованность компонентов находится в пределах 20~мкм.}
 \label{fig:prototype_macro}
 \end{figure}
 
-This assembled prototype proved the feasibility of the automated assembly and showed lots of issues to be solved in future. Even though it has only silver pained corner, not precise lithography, this prototype showed very good results in terms of assembling accuracy.
+Собранный прототип подтвердил осуществимость системы автоматизированной сборки и показал её возможности, а также и моменты, на которые стоит обратить внимание в дальнейшем. Несмотря на то, что собранный прототип в качестве маркеров использовал окрашенные углы, а не точную литографию, как настоящие и фиктивные сенсоры, он показал очень хорошие результаты в плане точности сборки.
